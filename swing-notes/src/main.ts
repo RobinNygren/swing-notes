@@ -5,7 +5,7 @@ import { NoteFormData } from './modules/types/interface';
 
 const runApp = async () => {
   try {
-    const username = 'ralle'; // Ersätt med ett faktiskt användarnamn
+    const username = 'klas'; // Ersätt med ett faktiskt användarnamn
     const notes = await getNotes(username);
     console.log('Anteckningar hämtade för användaren:', username, notes);
   } catch (error) {

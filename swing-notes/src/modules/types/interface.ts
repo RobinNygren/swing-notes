@@ -1,8 +1,9 @@
 export interface Note {
-    id: string; // Eller number om ID är numeriskt
+    id: string | number; // Eller number om ID är numeriskt
     username: string;
     title: string;
     note: string; // Antag att 'note' är ett fält som heter 'content'
+    createdAt: Date;
   }
   
   export interface ApiResponse<T> {
