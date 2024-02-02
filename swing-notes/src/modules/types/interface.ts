@@ -2,7 +2,7 @@ export interface Note {
     id: string; // Eller number om ID är numeriskt
     username: string;
     title: string;
-    content: string; // Antag att 'note' är ett fält som heter 'content'
+    note: string; // Antag att 'note' är ett fält som heter 'content'
   }
   
   export interface ApiResponse<T> {
@@ -13,5 +13,11 @@ export interface Note {
   export interface ApiError {
     message: string;
     status: number;
+  }
+
+  export interface NoteFormData {
+    username: string;
+    title: string;
+    note: string;
   }
   

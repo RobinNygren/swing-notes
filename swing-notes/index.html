@@ -7,7 +7,15 @@
     <title>Vite + TS</title>
   </head>
   <body>
-    <div id="app"></div>
+    <main>
+      <form id="noteForm">
+        <input type="text" id="username" placeholder="Användarnamn" required />
+        <input type="text" id="title" placeholder="Titel på anteckning" required />
+        <textarea id="note" placeholder="Texten i anteckningen" required></textarea>
+        <button type="submit">Skapa Anteckning</button>
+      </form>
+      
+    </main>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
