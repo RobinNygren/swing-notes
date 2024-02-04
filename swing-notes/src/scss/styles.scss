@@ -1,1 +1,17 @@
 @import "./base/reset";
+
+body {
+    background-color: #242424;
+    color-scheme: light dark;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+
+    main {
+        /* justify-content: center; */
+        
+    
+    }
+}

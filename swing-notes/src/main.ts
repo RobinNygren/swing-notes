@@ -1,4 +1,4 @@
-import './style.css'
+import './scss/styles.scss'
 import { getNotes } from './modules/api/getNotes'
 import { postNote } from './modules/api/postNote';
 import { NoteFormData } from './modules/types/interface';
