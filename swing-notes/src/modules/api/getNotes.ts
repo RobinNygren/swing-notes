@@ -25,7 +25,8 @@ export const getNotes = async (username: string): Promise<ApiResponse<Note[]> | 
   }
 };
 
-const runApp = async () => {
+export const runApp = async () => {
+  console.log('hejsan');
   const username = (document.getElementById('username') as HTMLInputElement).value;
   try {
     const notes = await getNotes(username);
@@ -35,4 +36,7 @@ const runApp = async () => {
   }
 };
 
-document.getElementById('searchButton')?.addEventListener('click', runApp);
+/* document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('searchButton')?.addEventListener('click', runApp);
+});
+ */

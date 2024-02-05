@@ -20,8 +20,11 @@ export const postNote = async (noteData: NoteFormData): Promise<ApiResponse<Note
       };
     }
   };
-// test
-  export const handleCreateNote = async () => {
+
+  export const handleCreateNote = async (event: Event) => {
+    console.log('hejsane');
+    event.preventDefault(); // Förhindra att formuläret skickas och sidan laddas om
+
     const username = (document.getElementById('username') as HTMLInputElement).value;
     const title = (document.getElementById('title') as HTMLInputElement).value;
     const note = (document.getElementById('note') as HTMLTextAreaElement).value;
@@ -38,4 +41,6 @@ export const postNote = async (noteData: NoteFormData): Promise<ApiResponse<Note
   };
 
 
-  document.getElementById('createNoteButton')?.addEventListener('click', handleCreateNote);
+ /*  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('noteForm')?.addEventListener('submit', handleCreateNote);
+}); */

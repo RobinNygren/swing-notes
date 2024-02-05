@@ -2,37 +2,9 @@ import './scss/styles.scss'
 import { getNotes } from './modules/api/getNotes'
 import { postNote } from './modules/api/postNote';
 import { NoteFormData } from './modules/types/interface';
+import { handleCreateNote } from './modules/api/postNote';
+import { runApp } from './modules/api/getNotes';
 
-/* const runApp = async () => {
-  try {
-    const username = 'klas'; // Ersätt med ett faktiskt användarnamn
-    const notes = await getNotes(username);
-    console.log('Anteckningar hämtade för användaren:', username, notes);
-  } catch (error) {
-    console.error('Ett fel uppstod:', error);
-  }
-}; */
-
-/* runApp(); */
-
-const username = (document.getElementById('username') as HTMLInputElement).value;
-const title = (document.getElementById('title') as HTMLInputElement).value;
-const note = (document.getElementById('note') as HTMLTextAreaElement).value;
-
-const handleFormSubmit = async (event: Event) => {
-  event.preventDefault();
-
-
-  const noteData: NoteFormData = { username, title, note };
-
-  try {
-    const response = await postNote(noteData);
-    console.log('Anteckning skapad:', response);
-    // Hantera framgångsrikt svar här
-  } catch (error:any) {
-    console.error('Fel vid skapandet av anteckningen:', error.respone.data);
-  }
-};
-
-document.getElementById('noteForm')?.addEventListener('submit', handleFormSubmit);
+document.getElementById('noteForm')?.addEventListener('submit', handleCreateNote);
+document.getElementById('searchButton')?.addEventListener('click', runApp);
 
