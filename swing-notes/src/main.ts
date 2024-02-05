@@ -3,7 +3,7 @@ import { getNotes } from './modules/api/getNotes'
 import { postNote } from './modules/api/postNote';
 import { NoteFormData } from './modules/types/interface';
 
-const runApp = async () => {
+/* const runApp = async () => {
   try {
     const username = 'klas'; // Ersätt med ett faktiskt användarnamn
     const notes = await getNotes(username);
@@ -11,17 +11,17 @@ const runApp = async () => {
   } catch (error) {
     console.error('Ett fel uppstod:', error);
   }
-};
+}; */
 
-runApp();
+/* runApp(); */
 
+const username = (document.getElementById('username') as HTMLInputElement).value;
+const title = (document.getElementById('title') as HTMLInputElement).value;
+const note = (document.getElementById('note') as HTMLTextAreaElement).value;
 
 const handleFormSubmit = async (event: Event) => {
   event.preventDefault();
 
-  const username = (document.getElementById('username') as HTMLInputElement).value;
-  const title = (document.getElementById('title') as HTMLInputElement).value;
-  const note = (document.getElementById('note') as HTMLTextAreaElement).value;
 
   const noteData: NoteFormData = { username, title, note };
 
@@ -29,8 +29,8 @@ const handleFormSubmit = async (event: Event) => {
     const response = await postNote(noteData);
     console.log('Anteckning skapad:', response);
     // Hantera framgångsrikt svar här
-  } catch (error) {
-    console.error('Fel vid skapandet av anteckningen:', error);
+  } catch (error:any) {
+    console.error('Fel vid skapandet av anteckningen:', error.respone.data);
   }
 };
 

@@ -9,15 +9,13 @@
   <body>
     <main>
       <form id="noteForm">
-        <input type="text" id="username" placeholder="Användarnamn" required />
-        <input type="text" id="title" placeholder="Titel på anteckning" required />
-        <textarea id="note" placeholder="Texten i anteckningen" required></textarea>
+        <input type="text" id="username" placeholder="Användarnamn"/>
+        <input type="text" id="title" placeholder="Titel på anteckning"/>
+        <textarea id="note" placeholder="Texten i anteckningen"></textarea>
         <button type="submit">Skapa Anteckning</button>
+        <button id="searchButton">Sök Anteckningar</button>
       </form>
-      <form id="searchForm">
-        <input type="text" id="searchUsername" placeholder="Användarnamn" required />
-        <button type="submit">Sök Anteckningar</button>
-      </form>
+      
       
     </main>
     <script type="module" src="/src/main.ts"></script>

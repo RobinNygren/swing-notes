@@ -20,3 +20,22 @@ export const postNote = async (noteData: NoteFormData): Promise<ApiResponse<Note
       };
     }
   };
+// test
+  export const handleCreateNote = async () => {
+    const username = (document.getElementById('username') as HTMLInputElement).value;
+    const title = (document.getElementById('title') as HTMLInputElement).value;
+    const note = (document.getElementById('note') as HTMLTextAreaElement).value;
+  
+    const noteData: NoteFormData = { username, title, note };
+  
+    try {
+      const response = await postNote(noteData);
+      console.log('Anteckning skapad:', response);
+      // Hantera framgångsrikt svar här
+    } catch (error: any) {
+      console.error('Fel vid skapandet av anteckningen:', error.response?.data);
+    }
+  };
+
+
+  document.getElementById('createNoteButton')?.addEventListener('click', handleCreateNote);

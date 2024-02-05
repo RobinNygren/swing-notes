@@ -1,8 +1,8 @@
 import { BASE_URL } from '../config';
 import axios from 'axios';
-import { Note } from '../types/interface';
-import { ApiResponse } from '../types/interface';
-import { ApiError } from '../types/interface';
+import { Note, ApiResponse, ApiError } from '../types/interface';
+
+
 
 
 export const getNotes = async (username: string): Promise<ApiResponse<Note[]> | ApiError> => {
@@ -24,3 +24,15 @@ export const getNotes = async (username: string): Promise<ApiResponse<Note[]> | 
     };
   }
 };
+
+const runApp = async () => {
+  const username = (document.getElementById('username') as HTMLInputElement).value;
+  try {
+    const notes = await getNotes(username);
+    console.log('Anteckningar hämtade för användaren:', username, notes);
+  } catch (error) {
+    console.error('Ett fel uppstod:', error);
+  }
+};
+
+document.getElementById('searchButton')?.addEventListener('click', runApp);
