@@ -36,7 +36,5 @@ export const runApp = async () => {
   }
 };
 
-/* document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('searchButton')?.addEventListener('click', runApp);
-});
- */
+
+document.getElementById('searchButton')?.addEventListener('click', runApp);

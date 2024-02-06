@@ -41,6 +41,5 @@ export const postNote = async (noteData: NoteFormData): Promise<ApiResponse<Note
   };
 
 
- /*  document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('noteForm')?.addEventListener('submit', handleCreateNote);
-}); */
+
+  document.getElementById('submit')?.addEventListener('click', handleCreateNote);
