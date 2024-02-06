@@ -6,13 +6,13 @@ export interface Note {
     createdAt: Date;
   }
   
-  export interface ApiResponse<T> {
-    data: T;
+  export interface ApiResponse {
+    response: Note; 
     status: number;
   }
   
   export interface ApiError {
-    message: string;
+    message: any;
     status: number;
   }
 

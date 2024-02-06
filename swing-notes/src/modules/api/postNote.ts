@@ -1,24 +1,27 @@
 import { BASE_URL } from "../config";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { Note, NoteFormData, ApiResponse, ApiError } from "../types/interface";
 
-export const postNote = async (noteData: NoteFormData): Promise<ApiResponse<Note> | ApiError> => {
+export const postNote = async (noteData: NoteFormData): Promise<ApiResponse | ApiError> => {
     console.log("Skickar noteData:", noteData);
     try {
-      const response = await axios.post<ApiResponse<Note>>(`${BASE_URL}/api/notes`, noteData);
+      const response = await axios.post<ApiResponse>(`${BASE_URL}/api/notes`, noteData);
        return response.data;  // Antas returnera ApiResponse<Note>
     } catch (error) {
       if (axios.isAxiosError(error)) {
+      console.error(error.message)
         return {
           message: error.message,
           status: error.response ? error.response.status : 500
         };
-      }
-      return {
-        message: "Ett okänt fel inträffade",
-        status: 500
-      };
     }
+    // Hantera övriga typer av fel
+    console.error("Ett oväntat fel inträffade");
+    return {
+      message: "Ett oväntat fel inträffade",
+      status: 500
+    };
+  }
   };
 
   export const handleCreateNote = async (event: Event) => {
