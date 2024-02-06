@@ -7,6 +7,30 @@ export const getNotes = async (): Promise<ApiResponse | ApiError> => {
     const username = (document.getElementById('username') as HTMLInputElement).value;
     const response = await axios.get<ApiResponse>(`${BASE_URL}/api/notes/${username}`);
     console.log(response.data)
+
+    const notesContainer = document.getElementById('notesContainer') as HTMLElement;
+    notesContainer.innerHTML = ''; // Rensar anteckningarna när man söker nytt namn
+
+    response.data.notes.forEach((note: Note) => {
+      const noteElement = document.createElement('section');
+      noteElement.classList.add('note'); // klass för att kunna styla
+
+      const titleElement = document.createElement('h3');
+      titleElement.textContent = note.title;
+      noteElement.appendChild(titleElement);
+
+      const noteContentElement = document.createElement('p');
+      noteContentElement.textContent = note.note;
+      noteElement.appendChild(noteContentElement);
+
+      const infoElement = document.createElement('small');
+      infoElement.textContent = `Skapad av: ${note.username} den ${note.createdAt}`;
+      noteElement.appendChild(infoElement);
+
+      notesContainer.appendChild(noteElement);
+    });
+
+
     return response.data
 
   } catch (error: any) {
@@ -23,27 +47,6 @@ document.getElementById('searchButton')?.addEventListener('click', async () => {
   getNotes();
 });
 /* 
-export const getNotes = async (username: string): Promise<ApiResponse<Note[]> | ApiError> => {
-  try {
-    const response = await axios.get<ApiResponse<Note[]>>(`${BASE_URL}/api/notes/${username}`);
-    console.log(response.data)
-    return response.data; // Returnerar ApiResponse<Note[]>
-  } catch (error) {
-    if (axios.isAxiosError(error)) {
-      // Om felet är ett Axios-fel och ett svar finns, returnera det som ApiError
-      return {
-        message: error.message, 
-        status: error.response ? error.response.status : 500
-      };
-    }
-    // Annars, returnera ett generiskt felmeddelande
-    return {
-      message: "Ett okänt fel inträffade",
-      status: 500
-    };
-  }
-};
-
 
 
 // loopa fram och visa anteckningar

@@ -7,8 +7,9 @@ export interface Note {
   }
   
   export interface ApiResponse {
-    response: Note; 
+    response: Note;
     status: number;
+    notes: Note[];
   }
   
   export interface ApiError {
