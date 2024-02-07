@@ -6,7 +6,7 @@ export const postNote = async (noteData: NoteFormData): Promise<ApiResponse | Ap
     console.log("Skickar noteData:", noteData);
     try {
       const response = await axios.post<ApiResponse>(`${BASE_URL}/api/notes`, noteData);
-       return response.data;  // Antas returnera ApiResponse<Note>
+       return response.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
       console.error(error.message)
@@ -37,7 +37,7 @@ export const postNote = async (noteData: NoteFormData): Promise<ApiResponse | Ap
     try {
       const response = await postNote(noteData);
       console.log('Anteckning skapad:', response);
-      // Hantera framgångsrikt svar här
+      
     } catch (error: any) {
       console.error('Fel vid skapandet av anteckningen:', error.response?.data);
     }

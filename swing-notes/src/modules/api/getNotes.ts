@@ -2,6 +2,9 @@ import { BASE_URL } from '../config';
 import axios from 'axios';
 import { Note, ApiResponse, ApiError } from '../types/interface';
 import { deleteNoteOnClick } from './deleteNote';
+import { updateNoteOnClick } from './putNote';
+
+
 export const getNotes = async (): Promise<ApiResponse | ApiError> => {
   try {
     const username = (document.getElementById('username') as HTMLInputElement).value;
@@ -33,6 +36,13 @@ export const getNotes = async (): Promise<ApiResponse | ApiError> => {
       deleteBtn.setAttribute('data-note-id', note.id);
       noteElement.appendChild(deleteBtn);
 
+      const updateBtn = document.createElement('button') as HTMLButtonElement;
+      updateBtn.textContent = 'Uppdatera';
+      updateBtn.classList.add('updateBtn');
+      updateBtn.setAttribute('data-note-id', note.id);
+      noteElement.appendChild(updateBtn);
+
+      updateBtn.addEventListener('click', updateNoteOnClick);
       deleteBtn.addEventListener('click', deleteNoteOnClick);
 
 
@@ -55,27 +65,4 @@ export const getNotes = async (): Promise<ApiResponse | ApiError> => {
 document.getElementById('searchButton')?.addEventListener('click', async () => {
   getNotes();
 });
-/* 
 
-
-// loopa fram och visa anteckningar
- 
-const displayNotes = (notes: Note[]) => {
-  const container = document.getElementById('notesContainer');
-  if (!container) return; // Om containern inte hittas, avbryt funktionen
-
-  container.innerHTML = ''; // Rensa befintligt innehåll
-
-  notes.forEach(note => {
-    const noteElement = document.createElement('section');
-    noteElement.className = 'note'; // Lägg till en klass för styling
-    noteElement.innerHTML = `
-      <h3>${note.title}</h3>
-      <p>${note.note}</p>
-      <p>${note.createdAt}</p>
-      <small>${note.username}</small>
-    `;
-
-    container.appendChild(noteElement);
-  });
-};  */

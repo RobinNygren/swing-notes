@@ -26,10 +26,9 @@ export const deleteNoteOnClick = async (event: Event) => {
     if (noteId) {
       try {
         await deleteNote(noteId);
-        target.parentElement?.remove(); // Ta bort notisen från DOM
+        target.parentElement?.remove(); // ta bort ifrån DOM också
       } catch (error) {
         console.error('Ett fel inträffade vid radering av notisen', error);
-        // Hantera fel, t.ex. visa ett felmeddelande
       }
     }
   };

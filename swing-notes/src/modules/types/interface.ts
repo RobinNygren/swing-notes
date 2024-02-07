@@ -2,7 +2,7 @@ export interface Note {
     id: string;
     username: string;
     title: string;
-    note: string; // Antag att 'note' är ett fält som heter 'content'
+    note: string;
     createdAt: Date;
   }
   
