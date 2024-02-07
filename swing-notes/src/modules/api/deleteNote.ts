@@ -4,7 +4,7 @@ import { ApiError } from "../types/interface";
 
 export const deleteNote = async (id: string): Promise <void | ApiError> => {
     try {
-        await axios.delete(`${BASE_URL}/api/notes/:${id}`);
+        await axios.delete(`${BASE_URL}/api/notes/${id}`);
     } catch (error) {
         if (axios.isAxiosError(error)) {
         return {
@@ -18,3 +18,18 @@ export const deleteNote = async (id: string): Promise <void | ApiError> => {
     };
     }
 };
+
+export const deleteNoteOnClick = async (event: Event) => {
+    const target = event.target as HTMLButtonElement;
+    const noteId = target.getAttribute('data-note-id');
+    
+    if (noteId) {
+      try {
+        await deleteNote(noteId);
+        target.parentElement?.remove(); // Ta bort notisen från DOM
+      } catch (error) {
+        console.error('Ett fel inträffade vid radering av notisen', error);
+        // Hantera fel, t.ex. visa ett felmeddelande
+      }
+    }
+  };

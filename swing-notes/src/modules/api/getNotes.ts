@@ -1,7 +1,7 @@
 import { BASE_URL } from '../config';
 import axios from 'axios';
 import { Note, ApiResponse, ApiError } from '../types/interface';
-
+import { deleteNoteOnClick } from './deleteNote';
 export const getNotes = async (): Promise<ApiResponse | ApiError> => {
   try {
     const username = (document.getElementById('username') as HTMLInputElement).value;
@@ -26,6 +26,15 @@ export const getNotes = async (): Promise<ApiResponse | ApiError> => {
       const infoElement = document.createElement('small');
       infoElement.textContent = `Skapad av: ${note.username} den ${note.createdAt}`;
       noteElement.appendChild(infoElement);
+
+      const deleteBtn = document.createElement('button') as HTMLButtonElement;
+      deleteBtn.textContent = 'Ta bort';
+      deleteBtn.classList.add('deleteBtn');
+      deleteBtn.setAttribute('data-note-id', note.id);
+      noteElement.appendChild(deleteBtn);
+
+      deleteBtn.addEventListener('click', deleteNoteOnClick);
+
 
       notesContainer.appendChild(noteElement);
     });

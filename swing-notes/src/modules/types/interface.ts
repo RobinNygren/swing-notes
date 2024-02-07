@@ -1,5 +1,5 @@
 export interface Note {
-    id: string | number; // Eller number om ID är numeriskt
+    id: string;
     username: string;
     title: string;
     note: string; // Antag att 'note' är ett fält som heter 'content'
