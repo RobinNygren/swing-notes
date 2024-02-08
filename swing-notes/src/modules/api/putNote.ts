@@ -23,10 +23,11 @@ export const putNote = async (id: string, noteData: Partial<Note>): Promise<ApiR
 export const updateNoteOnClick = async (event: Event) => {
     const button = event.target as HTMLButtonElement;
     const noteId = button.getAttribute('data-note-id');
-    const noteTextarea = document.getElementById("note") as HTMLTextAreaElement;
-    const noteContent = noteTextarea.value;
+    const noteSection = document.querySelector(`section[data-note-id="${noteId}"]`);
+    const noteContentElement = noteSection ? noteSection.querySelector('p.editable-note') : null;
+    const noteContent = noteContentElement ? noteContentElement.textContent || '' : ''; // om null använd tom sträng
 
-    if (noteId && noteContent) {
+    if (noteId && noteContent !== '') {  // kolla så att det inte är tomma strängar
         try {
             const response = await putNote(noteId, { note: noteContent });
             console.log('Notis uppdaterad:', response);

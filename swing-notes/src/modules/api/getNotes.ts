@@ -17,12 +17,15 @@ export const getNotes = async (): Promise<ApiResponse | ApiError> => {
     response.data.notes.forEach((note: Note) => {
       const noteElement = document.createElement('section');
       noteElement.classList.add('note'); // klass för att kunna styla
+      noteElement.setAttribute('data-note-id', note.id);
 
       const titleElement = document.createElement('h3');
       titleElement.textContent = note.title;
       noteElement.appendChild(titleElement);
 
       const noteContentElement = document.createElement('p');
+      noteContentElement.classList.add('editable-note');
+      noteContentElement.setAttribute('contenteditable', 'true');
       noteContentElement.textContent = note.note;
       noteElement.appendChild(noteContentElement);
 
