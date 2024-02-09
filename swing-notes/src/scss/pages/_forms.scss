@@ -2,8 +2,8 @@
 
 #formsContainer {
     @include flex-center;
+    @include container-size;
     color: $color-text-primary;
-    max-height: 70vh;
     flex-direction: column;
     gap: 1rem;
     border: 3px solid $color-text-secondary;

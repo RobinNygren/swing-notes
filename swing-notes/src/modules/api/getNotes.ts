@@ -35,17 +35,21 @@ export const getNotes = async (): Promise<ApiResponse | ApiError> => {
       infoElement.textContent = `Skapad av: ${note.username} den ${note.createdAt}`;
       noteElement.appendChild(infoElement);
 
+      const btnContainer = document.createElement('div');
+      btnContainer.classList.add('btn-container');
+      noteElement.appendChild(btnContainer);
+
       const deleteBtn = document.createElement('button') as HTMLButtonElement;
       deleteBtn.textContent = 'Ta bort';
       deleteBtn.classList.add('deleteBtn');
       deleteBtn.setAttribute('data-note-id', note.id);
-      noteElement.appendChild(deleteBtn);
+      btnContainer.appendChild(deleteBtn);
 
       const updateBtn = document.createElement('button') as HTMLButtonElement;
       updateBtn.textContent = 'Uppdatera';
       updateBtn.classList.add('updateBtn');
       updateBtn.setAttribute('data-note-id', note.id);
-      noteElement.appendChild(updateBtn);
+      btnContainer.appendChild(updateBtn);
 
       updateBtn.addEventListener('click', updateNoteOnClick);
       deleteBtn.addEventListener('click', deleteNoteOnClick);

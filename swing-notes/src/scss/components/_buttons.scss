@@ -1,8 +1,15 @@
 
 .button-container {
     margin: 1rem;
-    #submit, #searchButton {
-        color: $color-text-primary;
-        font-size: 0.9rem;
-    }
 }
+
+#submit, #searchButton {
+    @include button-base;
+    margin: 1rem;
+}
+
+.deleteBtn, .updateBtn {
+    @include button-base;
+    margin: 1rem;
+}
+

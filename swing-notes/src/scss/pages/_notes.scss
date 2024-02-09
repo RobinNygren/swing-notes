@@ -4,10 +4,22 @@
 
 
     #notesContainer {
+        @include container-size;
         font-family: $font-primary;
         color: $color-text-primary;
         overflow-y: scroll;
-        max-height: 70vh;
+        border: 3px solid $color-text-secondary;
+        border-radius: 1rem;
+
+        /* &::-webkit-scrollbar {
+            width: 10px; // Bredd på scrollbaren
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #BFA181; // Ange en synlig färg
+        } */
+    
+        
         
         
         
