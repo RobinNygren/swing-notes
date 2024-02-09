@@ -18,6 +18,8 @@ export const getNotes = async (): Promise<ApiResponse | ApiError> => {
       const noteElement = document.createElement('section');
       noteElement.classList.add('note'); // klass för att kunna styla
       noteElement.setAttribute('data-note-id', note.id);
+      notesContainer.appendChild(noteElement);
+      
 
       const titleElement = document.createElement('h3');
       titleElement.textContent = note.title;
@@ -49,7 +51,7 @@ export const getNotes = async (): Promise<ApiResponse | ApiError> => {
       deleteBtn.addEventListener('click', deleteNoteOnClick);
 
 
-      notesContainer.appendChild(noteElement);
+      
     });
 
 
@@ -68,4 +70,3 @@ export const getNotes = async (): Promise<ApiResponse | ApiError> => {
 document.getElementById('searchButton')?.addEventListener('click', async () => {
   getNotes();
 });
-

@@ -1,0 +1,8 @@
+
+
+main {
+    @include flex-center;
+    background-color: $color-background-primary;
+    color-scheme: light dark;
+    height: 100vh;
+}

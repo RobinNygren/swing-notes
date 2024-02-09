@@ -1,9 +1,12 @@
 import { BASE_URL } from "../config";
 import axios, { AxiosError } from "axios";
 import { Note, NoteFormData, ApiResponse, ApiError } from "../types/interface";
+import { getNotes } from "./getNotes";
+
+
 
 export const postNote = async (noteData: NoteFormData): Promise<ApiResponse | ApiError> => {
-    console.log("Skickar noteData:", noteData);
+    
     try {
       const response = await axios.post<ApiResponse>(`${BASE_URL}/api/notes`, noteData);
        return response.data;
@@ -37,7 +40,8 @@ export const postNote = async (noteData: NoteFormData): Promise<ApiResponse | Ap
     try {
       const response = await postNote(noteData);
       console.log('Anteckning skapad:', response);
-      
+
+      await getNotes();
     } catch (error: any) {
       console.error('Fel vid skapandet av anteckningen:', error.response?.data);
     }

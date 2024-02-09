@@ -1,0 +1,14 @@
+
+
+#formsContainer {
+    @include flex-center;
+    color: $color-text-primary;
+    max-height: 70vh;
+    flex-direction: column;
+    gap: 1rem;
+    border: 3px solid $color-text-secondary;
+    border-radius: 1rem;
+    margin-left: 3rem;
+        
+    
+}

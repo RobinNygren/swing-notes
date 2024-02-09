@@ -1,0 +1,22 @@
+@import "../abstract/mixins";
+@import "../abstract/fonts";
+@import "../abstract/colors";
+
+
+    #notesContainer {
+        font-family: $font-primary;
+        color: $color-text-primary;
+        overflow-y: scroll;
+        max-height: 70vh;
+        
+        
+        
+        .note {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.7;
+            border: 3px solid $color-text-secondary;
+            border-radius: 1rem;
+            margin: 1rem;
+        }
+    }
