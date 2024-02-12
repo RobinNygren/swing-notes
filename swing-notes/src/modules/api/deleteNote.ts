@@ -21,7 +21,7 @@ export const deleteNote = async (id: string): Promise <void | ApiError> => {
 
 export const deleteNoteOnClick = async (event: Event) => {
     const target = event.target as HTMLButtonElement;
-    const noteId = target.getAttribute('data-note-id');
+    const noteId: string | null = target.getAttribute('data-note-id');
     
     if (noteId) {
       try {

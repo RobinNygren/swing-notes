@@ -28,7 +28,6 @@ export const postNote = async (noteData: NoteFormData): Promise<ApiResponse | Ap
   };
 
   export const handleCreateNote = async (event: Event) => {
-    console.log('hejsane');
     event.preventDefault(); // Förhindra att formuläret skickas och sidan laddas om
 
     const username = (document.getElementById('username') as HTMLInputElement).value;

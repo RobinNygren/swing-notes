@@ -8,13 +8,13 @@ export interface Note {
   
   export interface ApiResponse {
     response: Note;
-    status: number;
+    status: string | number;
     notes: Note[];
   }
   
   export interface ApiError {
-    message: any;
-    status: number;
+    message: string;
+    status: string | number;
   }
 
   export interface NoteFormData {
