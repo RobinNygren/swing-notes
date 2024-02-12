@@ -2,6 +2,7 @@
 
 main {
     @include flex-center;
+    @include gradient-background;
     background-color: $color-background-primary;
     color-scheme: light dark;
     height: 100vh;

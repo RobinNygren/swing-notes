@@ -3,12 +3,12 @@
 #formsContainer {
     @include flex-center;
     @include container-size;
+    @include thick-border;
     color: $color-text-primary;
     flex-direction: column;
     gap: 1rem;
-    border: 3px solid $color-text-secondary;
-    border-radius: 1rem;
     margin-left: 3rem;
-        
+    font-family: $font-primary;
+
     
 }

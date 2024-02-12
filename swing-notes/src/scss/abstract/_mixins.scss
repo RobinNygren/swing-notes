@@ -7,7 +7,7 @@
 
   @mixin button-base {
     background-color: $button-color-primary;
-    color: $color-text-primary;
+    color: $button-text-secondary;
     border: none;
     border-radius: 1rem;
     padding: 10px 15px;
@@ -28,4 +28,42 @@
   height: 70vh;
 }
 
+@mixin button-remove {
+  background-color: $button-color-secondary;
+  color: $button-text-secondary;
+  border: none;
+  border-radius: 1rem;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  
+  &:hover {
+      background-color: darken($button-color-secondary, 10%);
+  }
+}
+
+@mixin gradient-background {
+  background-image: linear-gradient(to right, #1a3757, #17314e, #142b45, #11253c, #0e1f33, #0e1f33, #0e1f33, #0e1f33, #11253c, #142b45, #17314e, #1a3757);
+}
+
+@mixin input-base {
+  text-align: center;
+  width: 80%;
+  font-family: $font-primary;
+  color: $color-text-primary;
+  background-color: $color-background-primary;
+  border: 1px solid $color-text-secondary;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+@mixin thick-border {
+  border: 3px solid $color-text-secondary;
+  border-radius: 1rem;
+}
 

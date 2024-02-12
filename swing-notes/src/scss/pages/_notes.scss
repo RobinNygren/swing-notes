@@ -1,34 +1,11 @@
-@import "../abstract/mixins";
-@import "../abstract/fonts";
-@import "../abstract/colors";
 
 
     #notesContainer {
         @include container-size;
+        @include thick-border;
         font-family: $font-primary;
         color: $color-text-primary;
         overflow-y: scroll;
-        border: 3px solid $color-text-secondary;
-        border-radius: 1rem;
-
-        /* &::-webkit-scrollbar {
-            width: 10px; // Bredd på scrollbaren
-        }
-
-        &::-webkit-scrollbar-track {
-            background: #BFA181; // Ange en synlig färg
-        } */
-    
+        scrollbar-width: thin;
         
-        
-        
-        
-        .note {
-            font-size: 1rem;
-            font-weight: 400;
-            line-height: 1.7;
-            border: 3px solid $color-text-secondary;
-            border-radius: 1rem;
-            margin: 1rem;
-        }
     }

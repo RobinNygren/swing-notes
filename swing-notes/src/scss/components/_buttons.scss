@@ -9,7 +9,7 @@
 }
 
 .deleteBtn, .updateBtn {
-    @include button-base;
+    @include button-remove;
     margin: 1rem;
 }
 
