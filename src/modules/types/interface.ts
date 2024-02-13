@@ -8,7 +8,7 @@ export interface Note {
   
   export interface ApiResponse {
     response: Note;
-    status: string | number;
+    status: number;
     notes: Note[];
   }
   
