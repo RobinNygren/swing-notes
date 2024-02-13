@@ -5,17 +5,19 @@ import { deleteNoteOnClick } from './deleteNote';
 import { updateNoteOnClick } from './putNote';
 
 
-export const getNotes = async (): Promise<ApiResponse | ApiError> => {
+export const getNotes = async (): Promise<ApiResponse | ApiError<string, number>> => {
   try {
     // Hämtar användarnamnet och lagrar det i variabeln 'username'
     const username = (document.getElementById('username') as HTMLInputElement).value;
     const response = await axios.get<ApiResponse>(`${BASE_URL}/api/notes/${username}`);
-    console.log(response.data)
-
+    
+    // Hittar containern där anteckningarna ska visas
     const notesContainer = document.getElementById('notesContainer') as HTMLElement;
     notesContainer.innerHTML = ''; // Rensar anteckningarna när man söker nytt namn
 
+    // Loopar igenom varje anteckning i svaret och skapar HTML-element för att visa dem
     response.data.notes.forEach((note: Note) => {
+      // Skapar en ny sektion för varje anteckning
       const noteElement = document.createElement('section') as HTMLElement;
       noteElement.classList.add('note'); // klass för att kunna styla
       noteElement.setAttribute('data-note-id', note.id); // Lagrar anteckningens ID som ett attribut
@@ -68,14 +70,15 @@ export const getNotes = async (): Promise<ApiResponse | ApiError> => {
       console.error('Axios error:', error.message);
       return {
         message: error.message,
-        status: error.response?.status ?? 'No response status'
+        // Använd numerisk statuskod, använd 500 som fallback om status inte finns
+        status: error.response?.status ?? 500
       };
     } else if (error instanceof Error) {
       // Hantera Script-fel
       console.error('General error:', error.message);
       return {
         message: error.message,
-        status: 'Unknown error'
+        status: 500 // Använd en generisk felkod som 500
       };
     }
   
@@ -83,7 +86,7 @@ export const getNotes = async (): Promise<ApiResponse | ApiError> => {
     console.error('An unknown error occurred');
     return {
       message: 'An unknown error occurred',
-      status: 'Unknown'
+      status: 500 // Använd en generisk felkod som 500 för okända fel
     }
   }
   }

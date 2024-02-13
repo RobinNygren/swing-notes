@@ -1,11 +1,11 @@
 import { BASE_URL } from "../config";
-import axios, { AxiosError } from "axios";
-import { Note, NoteFormData, ApiResponse, ApiError } from "../types/interface";
+import axios from "axios";
+import { NoteFormData, ApiResponse, ApiError } from "../types/interface";
 import { getNotes } from "./getNotes";
 
 
 
-export const postNote = async (noteData: NoteFormData): Promise<ApiResponse | ApiError> => {
+export const postNote = async (noteData: NoteFormData): Promise<ApiResponse | ApiError<string, number>> => {
     
     try {
       const response = await axios.post<ApiResponse>(`${BASE_URL}/api/notes`, noteData);
@@ -30,21 +30,30 @@ export const postNote = async (noteData: NoteFormData): Promise<ApiResponse | Ap
   export const handleCreateNote = async (event: Event) => {
     event.preventDefault(); // Förhindra att formuläret skickas och sidan laddas om
 
+    // Hämtar användarinput från formuläret
     const username = (document.getElementById('username') as HTMLInputElement).value;
     const title = (document.getElementById('title') as HTMLInputElement).value;
     const note = (document.getElementById('note') as HTMLTextAreaElement).value;
-  
+    
+    // Skapar ett objekt med formulärdata
     const noteData: NoteFormData = { username, title, note };
   
     try {
-      const response = await postNote(noteData);
-      console.log('Anteckning skapad:', response);
+      // skicka den nya anteckningen till servern
+      await postNote(noteData);
+      
 
       await getNotes();
-    } catch (error: any) {
-      console.error('Fel vid skapandet av anteckningen:', error.response?.data);
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        //  ett AxiosError
+        console.error('Fel vid skapandet av anteckningen:', error.response?.data);
+      } else {
+        // För alla andra typer av fel
+        console.error('Ett oväntat fel inträffade');
+      }
     }
-  };
+  }
 
 
 

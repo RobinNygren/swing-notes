@@ -12,9 +12,9 @@ export interface Note {
     notes: Note[];
   }
   
-  export interface ApiError {
-    message: string;
-    status: string | number;
+  export interface ApiError<T,D> {
+    message: T;
+    status: D;
   }
 
   export interface NoteFormData {
